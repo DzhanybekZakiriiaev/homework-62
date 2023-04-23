@@ -47,11 +47,11 @@ public class AuthenticationController {
 
     @GetMapping("/sign-up")
     public String registerUser(){
-        return "sign-up";
+        return "sign-up.html";
     }
 
     @GetMapping("/login")
     public String authenticateUser(){
-        return "login";
+        return "login.html";
     }
 }

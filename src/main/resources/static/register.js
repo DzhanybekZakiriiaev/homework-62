@@ -25,7 +25,11 @@ async function createUser(userFormData) {
         },
         body: JSON.stringify(user)
     };
-    const response = await fetch(baseUrl + '/sign-up', settings);
-    const responseData = await response.json();
-    console.log(responseData);
+    try {
+        const response = await fetch(baseUrl + '/sign-up', settings);
+        const responseData = await response.json();
+        console.log(responseData);
+    } catch (err) {
+        console.log(err);
+    }
 }
