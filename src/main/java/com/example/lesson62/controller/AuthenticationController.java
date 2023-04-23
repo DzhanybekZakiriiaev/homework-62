@@ -52,6 +52,6 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public String authenticateUser(){
-        return "sign-up";
+        return "login";
     }
 }
