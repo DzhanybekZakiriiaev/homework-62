@@ -38,7 +38,7 @@ public class PublicationController {
     public String showPublications(Model model) {
         List<Publication> publications = publicationService.getPublicationOfOtherUsers(SecurityConfig.getCurrentUserEmail());
         model.addAttribute("publications", publications);
-        return "publications";
+        return "index";
     }
 
     @GetMapping("/watch")
