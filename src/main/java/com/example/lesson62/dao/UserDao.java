@@ -58,14 +58,19 @@ public class UserDao extends BaseDao {
     }
 
     public boolean login(String usernameOrEmail, String password) {
+        List<User> users;
         if (usernameOrEmail.contains("@")) {
-            User user = getUsersFromEmail(usernameOrEmail).get(0);
-            return user.getEmail().contains(usernameOrEmail) || user.getPassword().contains(password);
+            users = getUsersFromEmail(usernameOrEmail);
         } else {
-            User user = getUsersFromAccountName(usernameOrEmail).get(0);
-            return user.getAccountName().contains(usernameOrEmail) || user.getPassword().contains(password);
+            users = getUsersFromAccountName(usernameOrEmail);
         }
+        if (!users.isEmpty()) {
+            User user = users.get(0);
+            return user.getEmail().contains(usernameOrEmail) || user.getPassword().contains(password);
+        }
+        return false;
     }
+
 
     @Override
     public void createTable() {
