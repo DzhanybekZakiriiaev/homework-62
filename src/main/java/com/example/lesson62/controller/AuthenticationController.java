@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,13 +46,16 @@ public class AuthenticationController {
         return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
     }
 
-    @GetMapping("/sign-up")
-    public String registerUser(){
-        return "sign-up.html";
+    @GetMapping("/register")
+    public String showSignUp(Model model){
+        model.addAttribute("pageTitle", "Register");
+        model.addAttribute("message", "Welcome to the registration page!");
+        return "register";
     }
 
+
     @GetMapping("/login")
-    public String authenticateUser(){
-        return "login.html";
+    public String showLogin(){
+        return "login";
     }
 }

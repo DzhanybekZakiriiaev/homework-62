@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -21,6 +21,6 @@
     <input type="password" id="password" name="password"><br><br>
     <input type="submit" value="Submit">
 </form>
-<script src="login.js"></script>
+<script src="/js/login.js"></script>
 </body>
 </html>

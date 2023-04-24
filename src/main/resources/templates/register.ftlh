@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Registration</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>${pageTitle}</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h1>User Registration</h1>
+    <h1>${message}</h1>
     <form id="registration-form">
         <div class="form-group">
             <label for="username">Username</label>
@@ -32,6 +32,6 @@
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
 </div>
-<script src="register.js"></script>
+<script src="/js/register.js"></script>
 </body>
 </html>
