@@ -22,7 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:8089")
+@CrossOrigin(origins = "http://localhost:63342")
 @Controller
 @RequiredArgsConstructor
 public class PublicationController {
