@@ -22,7 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:8089")
 @Controller
 @RequiredArgsConstructor
 public class PublicationController {
@@ -37,7 +37,7 @@ public class PublicationController {
     public String showPublications(Model model) {
         List<Publication> publications = publicationService.getPublicationOfOtherUsers(SecurityConfig.getCurrentUserEmail());
         model.addAttribute("publications", publications);
-        return "publications";
+        return "index";
     }
 
     @GetMapping("/watch")
