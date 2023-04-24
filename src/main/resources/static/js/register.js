@@ -7,7 +7,13 @@ function onRegisterHandler(e) {
     e.preventDefault();
     const form = e.target;
     const data = new FormData(form);
-    createUser(data);
+    createUser(data)
+        .then(responseData => {
+            console.log(responseData);
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
 async function createUser(userFormData) {
