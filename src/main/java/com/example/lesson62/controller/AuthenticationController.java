@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/login")
+    @PostMapping("/authorize")
     public ResponseEntity<Boolean> authenticateUser(@RequestBody LoginDto loginDto) {
         if (userService.login(loginDto.getUsernameOrEmail(), loginDto.getPassword())) {
             return new ResponseEntity<>(userService.login(loginDto.getUsernameOrEmail(),
@@ -33,17 +34,17 @@ public class AuthenticationController {
     @PostMapping("/sign-up")
     public ResponseEntity<?> registerUser(@RequestBody SignUpDto signUpDto) {
         if (userService.checkUserFromAccountName(signUpDto.getUsername()).contains(signUpDto.getUsername())) {
-            return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body("{\"message\": \"Username is already taken!\"}");
         }
         if (userService.checkUserFromEmail(signUpDto.getEmail()).contains(signUpDto.getEmail())) {
-            return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body("{\"message\": \"Email is already taken!\"}");
         }
         User user = new User();
         user.setAccountName(signUpDto.getUsername());
         user.setEmail(signUpDto.getEmail());
-        user.setPassword(signUpDto.getPassword());
+        user.setPassword(new BCryptPasswordEncoder().encode(signUpDto.getPassword()));
         userService.saveToBase(user);
-        return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+        return ResponseEntity.ok().body("{\"message\": \"User registered successfully\"}");
     }
 
     @GetMapping("/register")
@@ -54,7 +55,7 @@ public class AuthenticationController {
     }
 
 
-    @GetMapping("/login")
+    @GetMapping("/my-login-page")
     public String showLogin(){
         return "login";
     }

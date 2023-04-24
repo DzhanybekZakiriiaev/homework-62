@@ -24,7 +24,7 @@ async function authenticateUser(loginFormData) {
         },
         body: JSON.stringify(loginData)
     };
-    const response = await fetch(baseUrl + '/login', settings);
+    const response = await fetch(baseUrl + '/authorize', settings);
     const responseData = await response.json();
     console.log(responseData);
 }

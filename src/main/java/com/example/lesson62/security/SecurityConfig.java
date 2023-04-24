@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .permitAll()
                 .and().formLogin()
+                .loginPage("/my-login-page")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
@@ -53,6 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic();
         http.csrf().disable();
     }
+
 
     @Bean
     @Override
