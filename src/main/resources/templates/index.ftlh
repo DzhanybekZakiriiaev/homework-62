@@ -31,7 +31,7 @@
                 <p>${user.accountName}</p>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8089/logout">logout</a>
+                <button id="logout-button">Logout</button>
             </li>
         </ul>
     </div>

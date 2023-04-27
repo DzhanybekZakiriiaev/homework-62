@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         createBasePosts().then(function() {
             document.getElementById('splash-screen').style.display = 'none';
             document.getElementById('container').style.display = 'block';
+            insertUsernameNavItem();
         });
     }
 
@@ -25,6 +26,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+const logoutButton = document.getElementById('logout-button');
+logoutButton.addEventListener('click', onLogoutHandler);
+
+function onLogoutHandler() {
+    localStorage.removeItem('user');
+}
+
+function insertUsernameNavItem() {
+    const nav = document.querySelector('.navbar-nav');
+    const username = restoreUser().username;
+    const li = document.createElement('li');
+    li.textContent = 'Logged in as: ' + username;
+    nav.appendChild(li);
+}
 
 
 function addHeart(id) {
