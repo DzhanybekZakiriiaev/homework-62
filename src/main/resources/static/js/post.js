@@ -1,4 +1,31 @@
 'use strict'
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('splash-screen').style.display = 'none';
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+        document.getElementById('splash-screen').style.display = 'block';
+        document.getElementById('container').style.display = 'none';
+    } else {
+        createBasePosts().then(function() {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('container').style.display = 'block';
+        });
+    }
+
+    $('#login-form').submit(function(event) {
+        event.preventDefault();
+        const user = {
+            username: $('#username-input').val(),
+            password: $('#password-input').val()
+        };
+        localStorage.setItem('user', JSON.stringify(user));
+        createBasePosts().then(function() {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('container').style.display = 'block';
+        });
+    });
+});
+
 
 function addHeart(id) {
     const postIconLike = document.getElementById(id);
@@ -204,7 +231,6 @@ async function submitComment(event, id, list) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', createBasePosts);
 
 async function createBasePosts() {
     const response = await fetch('http://localhost:8089/watch');

@@ -38,6 +38,7 @@ public class PublicationController {
     public String showPublications(Model model) {
         List<Publication> publications = publicationService.getPublicationOfOtherUsers(SecurityConfig.getCurrentUserEmail());
         model.addAttribute("publications", publications);
+        model.addAttribute("user", userService.getUserFromEmail(SecurityConfig.getCurrentUserEmail()));
         return "index";
     }
 
@@ -53,12 +54,6 @@ public class PublicationController {
         return new ResponseEntity<>(comments, HttpStatus.OK);
     }
 
-    @GetMapping("/publications/{id}")
-    public String showPublicationById(@PathVariable Long id, Model model) {
-        List<Publication> publications = publicationService.getPublicationById(id);
-        model.addAttribute("publications", publications);
-        return "publications";
-    }
     @PostMapping("/publications/add")
     public String addPost(@RequestParam(name = "imageLink") MultipartFile file, Model model,
                           @RequestParam(name = "description", required = false) String description,

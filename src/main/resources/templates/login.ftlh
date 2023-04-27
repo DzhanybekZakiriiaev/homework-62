@@ -17,8 +17,8 @@
                 <div class="card-body">
                     <form id="login-form">
                         <div class="form-group">
-                            <label for="username-or-email">Username or email:</label>
-                            <input type="text" id="username-or-email" name="usernameOrEmail" class="form-control">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
@@ -27,6 +27,7 @@
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
+                        <a href="http://localhost:8089/register"></a>
                     </form>
                 </div>
             </div>
